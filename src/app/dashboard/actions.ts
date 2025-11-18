@@ -37,6 +37,8 @@ const suggestionSchema = z.object({
 
 export type SuggestionFormState =
   | { status: "idle" }
+  | { status: "success"; message: string }
+  | { status: "error"; message: string };
 
 const saveOutlineSchema = z.object({
   productId: z.string().min(1),

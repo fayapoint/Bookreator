@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight, BarChart3, BookOpen, Layers, Plus, Sparkles } from "lucide-react";
 
@@ -242,7 +243,15 @@ export default async function DashboardPage() {
             </div>
           )}
         </section>
-        <CatalogProductsSection products={catalogProducts} />
+        <Suspense
+          fallback={
+            <div className="rounded-3xl border border-border/60 bg-card/60 p-8 text-center text-muted-foreground">
+              Carregando catálogo de produtos...
+            </div>
+          }
+        >
+          <CatalogProductsSection products={catalogProducts} />
+        </Suspense>
       </main>
     </div>
   );

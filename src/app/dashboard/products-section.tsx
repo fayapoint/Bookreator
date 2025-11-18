@@ -33,7 +33,7 @@ type Props = {
 
 export function CatalogProductsSection({ products }: Props) {
   const searchParams = useSearchParams();
-  const productIdFromUrl = searchParams.get("productId");
+  const productIdFromUrl = searchParams?.get("productId") ?? null;
 
   const [selectedProductId, setSelectedProductId] = useState<string | null>(
     productIdFromUrl ?? products[0]?.id ?? null
